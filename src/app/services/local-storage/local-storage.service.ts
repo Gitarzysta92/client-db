@@ -12,7 +12,7 @@ export class LocalStorageService {
     private readonly cache: NgForageCache
   ) {
     this.ngf.name = 'Store';
-    this.cache.driver = Driver.LOCAL_STORAGE;
+    this.cache.driver = Driver.INDEXED_DB;
   }
     
   public getItem(key: string) {
