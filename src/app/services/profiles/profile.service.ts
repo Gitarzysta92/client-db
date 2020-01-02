@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 
 import { MessageService } from '../messages/message.service';
+import { LocalStorageService } from '../local-storage/local-storage.service';
 import { Profile } from './profile';
+
 
 
 @Injectable({
@@ -17,14 +19,31 @@ export class ProfileService {
   constructor(
     private http: HttpClient,
     private messageService: MessageService,
+    private localStorage: LocalStorageService
   ) { }
 
-  public getProfiles(): Observable<Profile[]> {
-    return this.http.get<Profile[]>(this.profilesUrl)
-      .pipe(
-        tap(_ => this.log('Profiles fetched', 'ok')),
-        catchError(this.handleError<Profile[]>('getProfiles', []))
-      )
+  public getProfiles(): any {
+
+    const result = new Subject();
+    const localData = this.localStorage.getItem('Profiles');
+    localData.then(value => {
+      if (value) {
+        result.next(value);
+        console.log('localstorage');
+      } else {
+        console.log('backend');
+        this.http.get<Profile[]>(this.profilesUrl)
+          .pipe(
+            tap(_ => this.log('Profiles fetched', 'ok')),
+            catchError(this.handleError<Profile[]>('getProfiles', []))
+          ).subscribe(value => {
+            result.next(value);
+            this.localStorage.setItem('Profiles', value);
+          });
+      }
+    })
+
+    return result;
   }
 
   public getProfile(id: string): Observable<Profile> {

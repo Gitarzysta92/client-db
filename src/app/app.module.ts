@@ -37,6 +37,8 @@ import { UserAuthComponent } from './components/user-auth/user-auth.component';
 import { AppRoutingModule } from './app-routing.module';
 import { EntryComponent } from './components/entry/entry/entry.component';
 
+import { NgForageModule, NgForageConfig, Driver } from 'ngforage';
+
 
 
 @NgModule({
@@ -68,11 +70,24 @@ import { EntryComponent } from './components/entry/entry/entry.component';
     MatSelectModule,
     MatDatepickerModule,
     MatSlideToggleModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    NgForageModule.forRoot()
   ],
   providers: [
     MatNativeDateModule
   ],
   bootstrap: [EntryComponent]
 })
-export class AppModule { }
+export class AppModule {
+  public constructor(ngfConfig: NgForageConfig) {
+    ngfConfig.configure({
+      name: 'MyApp',
+      driver: [ // defaults to indexedDB -> webSQL -> localStorage
+        Driver.INDEXED_DB,
+        Driver.LOCAL_STORAGE
+      ]
+    });
+  }
+}
+
+

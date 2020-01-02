@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { LocalStorageService } from '../local-storage/local-storage.service';
 
 
 
@@ -7,18 +8,20 @@ import { Injectable } from '@angular/core';
 })
 export class UserService {
 
-  constructor() { }
+  constructor(
+    private localStorageService: LocalStorageService
+  ) { }
 
   isAuthorized(): boolean {
     return !!User.data
   }
 
   authorize(): void {
-
     User.data = true;
   };
 
   unAuthorize(): void {
+    this.localStorageService.clearStorage();
     User.data = null
   }
 }
