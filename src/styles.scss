@@ -1,0 +1,139 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+// Colors
+$primary-blue: #057bde;
+$primary-grey: #5c5c5c;
+$secondary-grey: #e4e4e4;
+$tertiary-grey: #dbdbdb;
+
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+// Typography
+a { 
+  color: inherit;
+  text-decoration: none;
+}
+
+h4 { font-weight: 500 }
+
+
+// Navigation
+.mobile-nav {
+  padding: 0 20px;
+  ul {
+    text-align: center;
+  }
+}
+
+
+// Pages elements
+
+[class*="_wrapper"] {
+  padding: 50px;
+  @media (max-width: 768px) { padding: 20px;}
+}
+
+.page-nav .col {
+  text-align: right;
+}
+
+
+// Color themes
+.sidebar_wrapper {
+  color: #fff;
+  background: #4c4c4c;
+}
+
+.dark {
+  h1, h2, h3, h4, h5 {
+    color: $secondary-grey;
+  }
+  .main-nav .current {
+    background-color: $primary-blue;
+  }
+  .message {
+    background-color: $primary-blue;
+    span { word-wrap: break-word; }
+  &.error {
+      background-color: red;
+    }
+  }
+}
+
+
+.light {
+  h1, h2, h3, h4, h5 {
+    color: $primary-grey;
+  }
+  .mobile-nav {
+    color: #fff;
+    background-color: $primary-blue;
+    .main-nav .current {
+      color: $primary-blue;
+      background-color: #fff;
+    }
+  }
+
+  .profile-box {
+    background-color: $secondary-grey;
+    &:hover {
+      h2 { color: #fff }
+      background-color: $primary-blue;
+    }
+  }
+  .profile {
+    cursor: pointer;
+    color: $primary-grey;
+    background-color: $secondary-grey;
+    &:hover {
+      color: #fff;
+      background-color: $primary-blue;
+      box-shadow: 0px 2px 5px #dbdbdb;  
+    }
+    .mat-button {
+      color: #fff;
+      background-color: $primary-grey; 
+    }
+    &:hover .mat-button {
+      color: $primary-blue;
+      background-color: #fff;   
+    }
+  }
+  .profile-head {
+    h2 { color: #fff }
+    color: #fff;
+    background-color: $primary-blue;
+
+    .mat-button {
+      color: $primary-blue;
+      background-color: #fff; 
+    }
+  }
+
+  .profile-dates, .profile-contact, .profile-details {
+    color: $primary-grey;
+    background-color: $secondary-grey;
+    span {
+      background-color: $tertiary-grey;
+    }
+  }
+
+  .back-btn {
+    color: $primary-grey;
+    background-color: $secondary-grey;
+  }
+
+  .form-button {
+    color: #fff;
+    background-color: $primary-blue;
+    &[disabled][disabled] {
+      color: $secondary-grey;
+      background-color: $primary-grey;
+    }
+  }
+
+}

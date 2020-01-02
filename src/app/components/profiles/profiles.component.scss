@@ -1,0 +1,72 @@
+.profile-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 15px 15px 40px;
+  .profile-label {
+    span { 
+      display: inline-block;
+      font-size: 0.9em;
+    }
+    .name { 
+      width: 250px;
+      @media (max-width: 768px) { width: auto; margin-right: 10px; };  
+    }
+    .phone {
+      width: 150px; 
+    }
+    .rating { 
+      width: 80px;
+      @media (max-width: 1070px) { display: none; }; 
+    }
+    .date { 
+      width: 200px;
+      @media (max-width: 1270px) { display: none; }; 
+    }
+  }
+  .controls {
+    .actions { width: 110px; display: inline-block; }
+    @media (max-width: 768px) { 
+      .delete { display: none;}  
+    }; 
+  }
+}
+
+.head {
+  font-size: 0.8em;
+  @media (max-width: 768px) { display: none; }; 
+}
+
+ul.profiles {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    margin: 15px 0;
+    border-radius: 5px;
+    .name { font-weight: 500; }
+    .mat-button { margin-right: 10px; }
+  }
+}
+
+
+.top-rated {
+  margin-bottom: 80px;
+  .profile-box {
+    border-radius: 5px;
+    padding: 40px;
+    margin-bottom: 20px;
+    @media (max-width: 1270px) { 
+      text-align: center;
+    }; 
+    @media (max-width: 1270px) { 
+      h2 { font-size: 1.2em; }
+    }; 
+    .rating {
+      text-align: center;
+    }
+  }
+}
+
+

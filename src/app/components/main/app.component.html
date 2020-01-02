@@ -1,0 +1,33 @@
+<header class="light">
+  <div class="mobile-nav">
+      <app-navigation></app-navigation>
+  </div>
+</header>
+<div class="container sidebar_wrapper dark">
+    <div class="row">
+      <div class="col">
+          <h2> Welcome to {{ title }}!</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+          <app-navigation></app-navigation>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button mat-button (click)="unAuthorize()">Wyloguj</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+          <app-messages></app-messages>
+      </div>
+    </div>
+</div>
+<main class="container-fluid light">
+    <router-outlet></router-outlet>
+</main>
+<footer></footer>
+
+

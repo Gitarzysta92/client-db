@@ -1,0 +1,14 @@
+{	
+	"extends": "../tsconfig.json",
+	"compilerOptions": {
+		"noImplicitAny": true,
+		"sourceMap": true,
+		"module": "CommonJS",
+		"target": "es6",
+		"outDir": "./build",
+		"typeRoots": [
+			"node_modules/@types",
+			"./typings.d.ts"
+    	]
+	}
+}

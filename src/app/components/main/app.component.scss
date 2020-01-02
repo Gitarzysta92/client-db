@@ -1,0 +1,40 @@
+// > 992 large screen devices breakpoint
+$sidebar-lg: 300px;
+
+// < 992 medium screen devices breakpoint
+$sidebar-md: 250px;
+
+
+header, main, footer {
+  display: block;
+}
+
+header {
+  width: 100%;
+}
+
+main {
+  width: calc(100% - #{$sidebar-lg}); 
+  float: right;
+  @media (max-width: 1200px) { width: calc(100% - #{$sidebar-md}) };
+  @media (max-width: 992px) { width: 100%; };
+}
+
+.sidebar_wrapper {
+  width: $sidebar-lg;
+  @media (max-width: 1200px) { width: $sidebar-md };
+  @media (max-width: 992px) { display: none; };
+  position: fixed;
+  height: 100%;
+  padding: 50px 30px;
+}
+
+footer {
+  width: 100%;
+}
+
+.mobile-nav {
+  display: none;
+  @media (max-width:  992px) { display: block; };
+}
+

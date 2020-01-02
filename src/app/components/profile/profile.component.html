@@ -1,0 +1,83 @@
+<div *ngIf='profile' class="profile_wrapper light">
+  <div class="page-nav light">
+    <div class="row">
+      <div class="col">
+        <button class='back-btn' mat-button (click)="goBack()">Previous page</button>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="profile-head section">
+      <div class="row align-items-center">
+        <div class="col-md-5 col-sm-12 name">
+          <h2>Name: {{profile.name}} {{profile.surname}}</h2>
+        </div>
+        <div class="col-md-5 col-sm-12">
+          <h2>Rating: {{profile.rating}} <mat-icon>whatshot</mat-icon></h2>
+        </div>  
+        <div class="col-md-2 col-sm-12 controls">
+          <a mat-button
+            routerLink="/profiles/edit/{{profile.id}}" >Edit</a>
+          <button
+            mat-icon-button
+            (click)='removeProfile(profile.id)' ><mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+  </div>
+
+  <div class="profile-contact section">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        Email: <span>{{profile.email}}</span>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        Phone: <span>{{profile.phone}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="row">
+      <div class="col-lg-6 col-md-12">
+        <div class="profile-dates section">
+          <div class="row">
+            <div class="col-12">
+              Profile active: <span>{{profile.isActive}}</span>
+            </div>
+            <div class="col-12 ">
+              Last update: <span>{{profile.lastUpdate | date : 'M/d/yy, h:mm a' }}</span>
+            </div>
+            <div class="col-12 ">
+              Creation date: <span>{{profile.creationDate | date : 'M/d/yy, h:mm a' }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12">
+        <div class="profile-details section">
+          <div class="row">
+            <div class="col-12">
+              Birth date: <span>{{profile.birthDate | date :  "dd.MM.y" }}</span>
+            </div>
+            <div class="col-12">
+              Gender: <span>{{profile.gender}}</span>
+            </div>
+            <div class="col-12">
+                Nationalities: 
+              <span *ngFor='let nationality of profile.nationalities'>
+                  {{nationality}}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  
+</div>

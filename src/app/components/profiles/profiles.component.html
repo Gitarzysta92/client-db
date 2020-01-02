@@ -1,0 +1,70 @@
+<div *ngIf="profiles.length === 0" class="no-items">
+  <app-loader></app-loader>
+</div>
+
+
+<div *ngIf="profiles.length > 0" class="profiles_wrapper">
+  <h2>Top rated</h2>
+  <div class="top-rated">
+    <div class="row">
+        <div *ngFor='let profile of topRated' class="col-md-6 col-sm-12">
+          <a class="name" routerLink="/profiles/{{profile.id}}">
+            <div class="profile-box">
+                <div class="row">
+                  <div class="col-md-6 col-sm-12 name">
+                      <h2>{{profile.name}} {{profile.surname}}</h2>
+                  </div>
+                  <div class="col-md-6 col-sm-12 rating">
+                      <h2>Rating: {{profile.rating}} <mat-icon>whatshot</mat-icon></h2>
+                  </div>  
+                </div>
+            </div>
+          </a>
+        </div>
+      </div>
+  </div>
+  
+  <h2>User profiles</h2>
+  <div class="row">
+    <div class="col">
+      <div class="head profile-row">
+        <div class="profile-label">
+          <span class="name">Name</span>
+          <span class="phone">Phone</span>
+          <span class="rating">Rating</span>
+          <span class="date">Last Update</span>
+        </div>
+        <div class="controls">
+          <span class="actions">Actions</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <ul class="profiles">
+        <li *ngFor='let profile of profiles' class="profile profile-row" routerLink="/profiles/{{profile.id}}">
+          <div class="profile-label">
+              <span class="name">{{profile.name}} {{profile.surname}}</span>
+              <span class="phone">{{profile.phone}}</span>
+              <span class="rating">{{profile.rating}}</span>
+              <span class="date">{{profile.lastUpdate | date : 'M/d/yy, h:mm a'}}</span>
+          </div>
+          <div class="controls">
+            <a mat-button
+              class="edit"
+              (click)='$event.stopPropagation();'
+              routerLink="/profiles/edit/{{profile.id}}" >Edit</a>
+            <button
+              class="delete"
+              mat-icon-button
+              (click)='removeProfile(profile.id); $event.stopPropagation();' ><mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
