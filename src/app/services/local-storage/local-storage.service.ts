@@ -8,11 +8,9 @@ import {NgForage, Driver, NgForageCache, NgForageConfig, CachedItem} from 'ngfor
 })
 export class LocalStorageService {
   constructor(
-    private readonly ngf: NgForage, 
-    private readonly cache: NgForageCache
+    private readonly ngf: NgForage
   ) {
     this.ngf.name = 'Store';
-    this.cache.driver = Driver.INDEXED_DB;
   }
     
   public getItem(key: string) {
