@@ -26,5 +26,15 @@ export class MessageService {
     this.messages = this.messages.filter(message => message.id !== id);
   }
 
+
+  log(message: string, type: string) {
+    this.add({content: `App: ${message}`, type });
+  }
+
+  clear() {
+    this.messages.length = 0;
+    this.messageNumber = 0;
+  }
+
 }
 

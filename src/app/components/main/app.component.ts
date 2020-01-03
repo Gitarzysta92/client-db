@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from 'src/app/services/user/user.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -13,13 +13,13 @@ export class AppComponent {
 
   constructor(
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   unAuthorize() {
     this.userService.unAuthorize();
-    this.router.navigate(['../']);
-    console.log('asd')
+    this.router.navigate(['/login']);
   }
 
 
