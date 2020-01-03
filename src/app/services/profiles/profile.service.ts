@@ -23,22 +23,20 @@ export class ProfileService {
   ) { }
 
   public getProfiles(): any {
-
     const result = new Subject();
-    const localData = this.localStorage.getItem('Profiles');
+    const localData = this.localStorage.getItems();
     localData.then(value => {
       if (value) {
         result.next(value);
-        console.log('localstorage');
+        this.log('Profiles fetched from the local db', 'ok')
       } else {
-        console.log('backend');
         this.http.get<Profile[]>(this.profilesUrl)
           .pipe(
-            tap(_ => this.log('Profiles fetched', 'ok')),
+            tap(_ => this.log('Profiles fetched from the server', 'ok')),
             catchError(this.handleError<Profile[]>('getProfiles', []))
           ).subscribe(value => {
             result.next(value);
-            this.localStorage.setItem('Profiles', value);
+            this.localStorage.setItems(value);
           });
       }
     })

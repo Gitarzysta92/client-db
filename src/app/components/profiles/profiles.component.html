@@ -4,25 +4,6 @@
 
 
 <div *ngIf="profiles.length > 0" class="profiles_wrapper">
-  <h2>Top rated</h2>
-  <div class="top-rated">
-    <div class="row">
-        <div *ngFor='let profile of topRated' class="col-md-6 col-sm-12">
-          <a class="name" routerLink="/profiles/{{profile.id}}">
-            <div class="profile-box">
-                <div class="row">
-                  <div class="col-md-6 col-sm-12 name">
-                      <h2>{{profile.name}} {{profile.surname}}</h2>
-                  </div>
-                  <div class="col-md-6 col-sm-12 rating">
-                      <h2>Rating: {{profile.rating}} <mat-icon>whatshot</mat-icon></h2>
-                  </div>  
-                </div>
-            </div>
-          </a>
-        </div>
-      </div>
-  </div>
   
   <h2>User profiles</h2>
   <div class="row">

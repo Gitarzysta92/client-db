@@ -13,15 +13,13 @@ import { ProfileService } from '../../services/profiles/profile.service';
 
 export class ProfilesComponent implements OnInit {
   profiles: Profile[] = [];
-  topRated: Profile[] = [];
 
   constructor(private profileService: ProfileService) {}
 
   getProfiles(): void {
     this.profileService.getProfiles()
       .subscribe(profiles => {
-        this.profiles = profiles;
-        this.topRated = this.getTopRated(profiles);
+        this.profiles = profiles.map(data => new Profile(data));
       });
   }
 
@@ -43,3 +41,6 @@ export class ProfilesComponent implements OnInit {
   }
 
 }
+
+
+
