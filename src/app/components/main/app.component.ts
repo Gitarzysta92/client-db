@@ -20,6 +20,7 @@ export class AppComponent {
   unAuthorize() {
     this.userService.unAuthorize();
     this.router.navigate(['/login']);
+    console.log(this.router);
   }
 
 

@@ -32,12 +32,14 @@ import { AddProfileComponent } from './components/add-profile/add-profile.compon
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { UserAuthComponent } from './components/user-auth/user-auth.component';
+import { ComparisionComponent } from './components/comparision/comparision.component';
 
 // Routing
 import { AppRoutingModule } from './app-routing.module';
 import { EntryComponent } from './components/entry/entry/entry.component';
 
 import { NgForageModule, NgForageConfig, Driver } from 'ngforage';
+
 
 
 
@@ -53,7 +55,8 @@ import { NgForageModule, NgForageConfig, Driver } from 'ngforage';
     EditProfileComponent,
     LoaderComponent,
     UserAuthComponent,
-    EntryComponent
+    EntryComponent,
+    ComparisionComponent
   ],
   imports: [
     BrowserModule,

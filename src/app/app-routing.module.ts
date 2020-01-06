@@ -8,6 +8,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { AddProfileComponent } from './components/add-profile/add-profile.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { UserAuthComponent } from './components/user-auth/user-auth.component';
+import { ComparisionComponent } from './components/comparision/comparision.component';
+
 
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
 
@@ -20,7 +22,12 @@ const routes: Routes = [
     { path: ':id', component: ProfileComponent },
     { path: 'edit/:id', component: EditProfileComponent }
   ]},
-  { path: 'login', component: UserAuthComponent }
+  { path: 'asd', component: AppComponent ,canActivate: [AuthGuardService], children: [
+    { path: 'asd', component: ComparisionComponent }
+  ]},
+  
+  { path: 'login', component: UserAuthComponent },
+  
 ];
 
 
