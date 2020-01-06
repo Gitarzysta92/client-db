@@ -15,15 +15,15 @@ import { AuthGuardService } from './services/auth-guard/auth-guard.service';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/profiles', pathMatch: 'full' },
+  { path: '', redirectTo: '/comparisions/crud', pathMatch: 'full' },
   { path: 'profiles', component: AppComponent ,canActivate: [AuthGuardService], children: [
     { path: '', component: ProfilesComponent },
     { path: 'add', component: AddProfileComponent },
     { path: ':id', component: ProfileComponent },
     { path: 'edit/:id', component: EditProfileComponent }
   ]},
-  { path: 'asd', component: AppComponent ,canActivate: [AuthGuardService], children: [
-    { path: 'asd', component: ComparisionComponent }
+  { path: 'comparisions', component: AppComponent ,canActivate: [AuthGuardService], children: [
+    { path: 'crud', component: ComparisionComponent }
   ]},
   
   { path: 'login', component: UserAuthComponent },

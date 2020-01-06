@@ -1,1 +1,22 @@
-<p>comparision works!</p>
+<div *ngIf="servicesToTest.length > performanceTests.length" class="no-items">
+  <app-loader></app-loader>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div *ngFor="let performanceTest of performanceTests" class="col-md-6">
+        <h2>{{ performanceTest.name }}</h2>
+        <hr>
+        <p>Liczba elementów w bazie: {{ testData.length }}</p>
+        <p>Liczba edytowanych elementów: {{ numberOfItemsToEdit }}</p>
+        <hr>
+        <ul>
+          <li>Tworzenie: {{ performanceTest.create }} ms</li>
+          <li>Odczytywanie: {{ performanceTest.read }} ms</li>
+          <li>Nadpisywanie: {{ performanceTest.update }} ms</li>
+          <li>Usuwanie: {{ performanceTest.delete }} ms</li>
+        </ul>
+    </div>
+  </div>
+</div>

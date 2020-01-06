@@ -36,13 +36,24 @@ export class ProfileService {
             catchError(this.handleError<Profile[]>('getProfiles', []))
           ).subscribe(value => {
             result.next(value);
-            this.localStorage.setItems(value);
+            this.localStorage.addItems(value);
           });
       }
     })
-
     return result;
   }
+
+  public getServerProfiles(): Promise<any> {
+    const promise = new Promise((resolve) => {
+      this.http.get<Profile[]>(this.profilesUrl)
+        .pipe(
+          tap(_ => this.log('Profiles fetched from the server', 'ok')),
+          catchError(this.handleError<Profile[]>('getProfiles', []))
+        ).subscribe(value => resolve(value));
+    });
+    return promise;
+  }
+
 
   public getProfile(id: string): Observable<Profile> {
     return this.http.get<Profile>(`${this.profilesUrl}/${id}`)
